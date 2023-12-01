@@ -2,7 +2,9 @@ const fs = require('node:fs/promises');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const path = require('node:path');
 const PORT = 4000;
+
 
 app.use(bodyParser.json());
 app.use((req, res, next) => {
@@ -13,7 +15,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/home', async (req, res) => {
-  const data = await fs.readFile('events.json', 'utf8');
+  const filepath = path.join(process.cwd(), 'events.json');
+  const data = await fs.readFile(filepath, 'utf8');
   res.status(200).json(data);
 });
 
