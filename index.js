@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/home', async (req, res) => {
-  const data = await fs.readFile('data/events.json', 'utf8');
+  const data = await fs.readFile('events.json', 'utf8');
   res.status(200).json(data);
 });
 
