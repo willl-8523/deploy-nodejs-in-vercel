@@ -15,7 +15,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/home', async (req, res) => {
-  const filepath = path.join(process.cwd(), 'events.json');
+  const filepath = path.join(process.cwd(), 'data/events.json');
   const data = await fs.readFile(filepath, 'utf8');
   res.status(200).json(data);
 });
